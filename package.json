@@ -1,0 +1,22 @@
+{
+  "name": "nodejs-pgpromise",
+  "version": "1.0.0",
+  "description": "A tutorial of using pg-promise in Node.js. Using single insert, update, delete, and bulk insert commands.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js -e js,mjs,json,hbs,css"
+  },
+  "keywords": [],
+  "author": "MLAbram",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "pg-promise": "^11.5.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
