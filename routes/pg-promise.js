@@ -1,13 +1,18 @@
 require('dotenv').config()
 
-const pgp_conn = {
+const initOptions = {
+    // initialization options;
+}
+
+const pgp = require('pg-promise')(initOptions)
+
+const cn = {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     database: process.env.DB_DATABASE,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD
 }
-const pgp = require('pg-promise')()
-const pgpDB = pgp(pgp_conn)
+const db = pgp(cn)
 
-module.exports = pgpDB
+module.exports = {pgp, db}
