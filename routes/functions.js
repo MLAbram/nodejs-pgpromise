@@ -5,9 +5,18 @@ const pgPromise = require('./pg-promise')
 require('dotenv').config()
 
 exports.getWeatherForecast = async() => {
+<<<<<<< HEAD
     var results = []
     const baseURL = 'https://api.openweathermap.org/data/2.5/forecast?appid=' + process.env.OPENWEATHER_API  + '&units=imperial&mode=json&lang=en'
     const records = await pgPromise.db.any('select name_t, city_t, state_abbr_t, latitude_n, longitude_n from dev.nodejs_pgpromise_locations where aud_active_f = $1;', [true])
+=======
+    var axiosURL = ''
+    var axiosResponse = {}
+    var daysResults = []
+    var hoursResults = []
+    const baseURL = 'https://api.openweathermap.org/data/2.5/forecast?lat=30.266666&lon=-97.733330&appid=9a5f9e485370ba08bb01cfd8b22d2679' + process.env.OPENWEATHER_API + '&mode=json&units=imperial&lang=en'
+    const records = await pgPromise.db.any('select name_sub_t icao_t,name_t,city_t,state_abbr_t,state_t,postal_code_t,country_abbr_t,country_t,time_zone_t,latitude_n,longitude_n from prod.api_source_metadata where type_t = $1 and daily_f = $2 and aud_active_f = $3 limit 1;', ['Weather', true, true])
+>>>>>>> 3b767d2 (Code Changes)
     
     for (const record of records) {
         const axiosURL = baseURL + '&lat=' + record.latitude_n + '&lon=' + record.longitude_n
